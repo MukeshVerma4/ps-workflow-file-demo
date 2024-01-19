@@ -20,7 +20,7 @@ jobs:
 
       - run: echo "Repo - ${{github.repository}} has been cloned to runner"
 
-      - run: echo "Your code has been copied to path :{{github.workspace}}"
+      - run: echo "Your code has been copied to path - ${{github.workspace}}"
 
       - name: Conditional step when eent is pull request
         if: ${{github.event_name == 'pull_request'}}
