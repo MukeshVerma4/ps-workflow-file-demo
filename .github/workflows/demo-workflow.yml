@@ -10,4 +10,38 @@ jobs:
 
       # Runner information
       - run: echo "This job is running on ${{ runner.os }} OS."
-      
+
+      #Info about repo and branch
+      - run: echo "Branch name :${{ github.ref }}, Repo Name: ${{ github.repository }}"
+
+      #Use github checkout actions 
+      - name: Using checkout action
+        uses: actions/checkout@v2
+
+      - run: echo "Repo - ${{github.repository}} has been cloned to runner"
+
+      - run: echo "Your code has been copied to path :{{github.workspace}}"
+
+      - name: Conditional step when eent is pull request
+        if: ${{github.event_name == 'pull_request'}}
+        run: echo "This is a pull request"
+
+      - name: List files in repo
+        run: |
+          ls ${{github.workspace}}
+
+      - name: Setup .Net
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.x'
+
+      - name: Display .net version
+        run: dotnet --version
+
+      - run: echo "Preinstalled tools are located here ${{github.tools_cache}}"
+
+      - name: List files in tool cache
+        run: |
+          ls ${{github:tools_cache}}
+
+      - run: echo "Job status - ${{job.status}}"
