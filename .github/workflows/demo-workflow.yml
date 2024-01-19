@@ -38,10 +38,10 @@ jobs:
       - name: Display .net version
         run: dotnet --version
 
-      - run: echo "Preinstalled tools are located here ${{github.tool_cache}}"
+      - run: echo "Preinstalled tools are located here ${{runner.tool_cache}}"
 
       - name: List files in tool cache
         run: |
-          ls ${{github.tool_cache}}
+          ls ${{runner.tool_cache}}
 
       - run: echo "Job status - ${{job.status}}"
