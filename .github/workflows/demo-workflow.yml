@@ -5,9 +5,9 @@ jobs:
     name: Exploring demo job
     runs-on: ubuntu-latest
     steps:
-      #Display the event that triggered the workflow run
+      # Display the event that triggered the workflow run
       - run: echo "This job is triggred on ${{ github.event_name }} event"
 
-      #Runner information
+      # Runner information
       - run: echo "This job is running on ${{ runner.os }} OS."
       
