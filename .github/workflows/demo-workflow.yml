@@ -42,6 +42,6 @@ jobs:
 
       - name: List files in tool cache
         run: |
-          ls ${{github:tools_cache}}
+          ls ${{github.tools_cache}}
 
       - run: echo "Job status - ${{job.status}}"
