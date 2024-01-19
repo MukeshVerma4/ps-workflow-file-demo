@@ -12,7 +12,7 @@ jobs:
       - run: echo "This job is running on ${{ runner.os }} OS."
 
       #Info about repo and branch
-      - run: echo "Branch name :${{ github.ref }}, Repo Name: ${{ github.repository }}"
+      - run: echo "Branch name :${{ github.ref }} and Repo Name - ${{ github.repository }}"
 
       #Use github checkout actions 
       - name: Using checkout action
