@@ -45,3 +45,10 @@ jobs:
           ls ${{runner.tool_cache}}
 
       - run: echo "Job status - ${{job.status}}"
+
+  Second-Job: 
+      name: Another job running on another runner
+      runs-on: ubuntu-latest
+      needs: Example-action-job
+      steps: 
+        - run: echo "This is another job running on ${{ runner.os }} machine."
