@@ -1,0 +1,10 @@
+name: External call to Workflow file
+on:
+  repository_dispatch:
+    types: run_my_workflow
+jobs:
+  AccessDataFromOutside:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print data from external call
+        run: echo "Data from external call - ${{ github.event.client_payload.somedata }}"
