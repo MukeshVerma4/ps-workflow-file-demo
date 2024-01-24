@@ -1,0 +1,18 @@
+name: Manual Trigger of Workflow file
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Some name"
+        required: true
+        default: "John"
+      deploy:
+        description: "Deploy data"
+        required: true
+        default: "some data"
+jobs:
+  runs-on: ubutu-latest
+  steps:
+    - name: Print name
+      run: echo "name - ${{ github.event.inputs.name }}"
+    
