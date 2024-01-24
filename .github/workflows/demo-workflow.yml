@@ -1,7 +1,7 @@
 name: GitHub Workflow Demo
 on: 
   schedule:
-    - cron: '12 16 * * *'
+    - cron: '44 10 * * *'
 jobs:
   Example-action-job:
     name: Exploring demo job
