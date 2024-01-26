@@ -1,0 +1,16 @@
+name: Data Sharing using Upload-Download Artifacts
+on:
+  workflow_dispatch:
+jobs:
+  UploadJob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v3
+      - run: node ci
+      - run: npm run build --if-present
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Node Build
+          path: dist
