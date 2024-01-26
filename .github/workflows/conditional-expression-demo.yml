@@ -1,0 +1,59 @@
+name: Conditional expression demo
+on:
+  workflow_dispatch:
+    inputs:
+      failstep:
+        description: "Enter failed step"
+        required: true
+        default: 'No'
+jobs:
+  FirstJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code if running on master branch
+        if: ${{ github.ref == "ref/head/main" }}
+        uses: actions/checkout@v2
+        
+      - name: check if passed input is yes
+        if: ${{ github.event.inputs.failstep == "Yes" }}
+        run: echo "Passd input is YES"
+        
+      - name: check if no passed
+        run: "Passed input is NO"
+        if: github.event.inputs.failstep == "No"
+        
+      - name: step can be failed
+        env:
+          FAILSTEP: ${{ github.event.inputs.failstep }}
+        run: | 
+          echo "This step will run whether result will be 1 or 0"
+          if [[FAILSTEP == True]]
+          then
+            exit 1
+          fi
+          
+      - name: another step in WF
+        run: echo "Another step in WF"
+        
+      - name: This step only runs if prev failure
+        if: failure()
+        run: echo "One of the prev step failed"
+        
+      - name: another step in WF
+        run: echo "Another step in WF"
+      
+      - name: this step always runs
+        if: always()
+        run: echo "Always run"
+        
+      - name: this step will run only if all prev steps succeeded
+        if: success()
+        run: echo "All Succeeded"
+        
+  SecondJob:
+    runs-on: ubuntu-latest
+    needs: FirstJob
+    steps:
+      - name: Sample step
+        run: echo "Sample step in second job
+      
