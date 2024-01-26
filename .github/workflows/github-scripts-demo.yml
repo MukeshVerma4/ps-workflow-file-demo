@@ -9,11 +9,11 @@ jobs:
         id: create-issue
         with:
           script: |
-            console.log(contex)
+            console.log(context)
             github.rest.issues.create({
               owner: context.repo.owner,
-              repo: cotext.repo.repo,
-              title: 'This is comment #1'
+              repo: context.repo.repo,
+              title: 'This is comment #1',
               body: 'This issue is created using github sripts'
             })
             return "Some return data"
