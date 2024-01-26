@@ -1,0 +1,11 @@
+name: Context variables demo
+on:
+  workflow_dispatch:
+env:
+  common: "Some Data"
+jobs:
+  DemonstrateEnvVars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: below code access env vars defined for all jobs
+        run: echo "Value of common env var is - ${{ env.common }}"
