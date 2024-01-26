@@ -10,6 +10,12 @@ jobs:
   FirstJob:
     runs-on: ubuntu-latest
     steps:
+      - name: Print passed value
+        run: echo "Passed value is - ${{ github.event.inputs.failstep }}"
+      
+      - name: Print current branch
+        run: echo "Current branch - ${{ github.ref }}"
+        
       - name: checkout code if running on master branch
         if: ${{ github.ref == 'ref/head/main' }}
         uses: actions/checkout@v2
