@@ -9,3 +9,8 @@ jobs:
     steps:
       - name: below code access env vars defined for all jobs
         run: echo "Value of common env var is - ${{ env.common }}"
+  OtherJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: trying to access env var from prev job
+        run: echo "Common env var - ${{ env.common }}"
