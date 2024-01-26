@@ -6,11 +6,19 @@ env:
 jobs:
   DemonstrateEnvVars:
     runs-on: ubuntu-latest
+    env:
+      job-var: "Some job specific data"
     steps:
       - name: below code access env vars defined for all jobs
         run: echo "Value of common env var is - ${{ env.common }}"
+      - name: accessing job data
+        run: echo "Value of job env var is - ${{ env.job-var }}"
   OtherJob:
     runs-on: ubuntu-latest
     steps:
       - name: trying to access env var from prev job
-        run: echo "Common env var - ${{ env.common }}"
+        run: echo "Job env var - ${{ env.job-var }}"
+      - name: step specific var
+        env:
+          step-data: "Some step data"
+        run: echo "Value of step env var is - ${{ env.step-data }}"
