@@ -1,0 +1,23 @@
+name: GitHub Script Demo
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu:latest
+    steps:
+      - uses: actions:github-script@v5
+        id: create-issue
+        with:
+          script: |
+            console.log(contex)
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: cotext.repo.repo,
+              title: 'This is comment #1'
+              body: 'This issue is created using github sripts'
+            })
+            return "Some return data"
+
+      - name: Get results
+        run: echo ${{ steps.create-issue.outputs.result }}
+          
