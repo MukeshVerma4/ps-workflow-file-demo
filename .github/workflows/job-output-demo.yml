@@ -19,4 +19,4 @@ jobs:
       - name: Print message from JOB1
         run: echo ${{ needs.JOB1.outputs.message }}
       - name: Print url from JOB1
-        run: needs.JOB1.outputs.url
+        run: echo needs.JOB1.outputs.url
