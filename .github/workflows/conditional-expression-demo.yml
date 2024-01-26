@@ -33,7 +33,7 @@ jobs:
           FAILSTEP: ${{ github.event.inputs.failstep }}
         run: | 
           echo "This step will run whether result will be 1 or 0"
-          if [[FAILSTEP == True]]
+          if [[ $FAILSTEP == True]]
           then
             exit 1
           fi
