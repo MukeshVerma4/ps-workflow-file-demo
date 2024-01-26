@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: Build
+          name: Node Build
           path: build
       - run: zip -r build.zip build/
       - uses: ncipollo/release-action@v1
