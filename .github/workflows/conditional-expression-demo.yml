@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code if running on master branch
-        if: ${{ github.ref == "ref/head/main" }}
+        if: ${{ github.ref == 'ref/head/main' }}
         uses: actions/checkout@v2
         
       - name: check if passed input is yes
